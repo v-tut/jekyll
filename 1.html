@@ -1,0 +1,264 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+
+<style>
+body {
+    margin: 0;
+    padding: 0 5 0 5;
+}
+#wrap {
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  margin: auto;  
+  text-align: center;
+padding: 0;  
+}
+
+#file {
+    display:none;
+}
+
+#myBtn {
+	margin: 0;
+    position: fixed; /* Fixed/sticky position */
+    top: 10px; /* Place the button at the bottom of the page */
+    right: 10px; /* Place the button 30px from the right */
+    z-index: 999; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: white; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 5px; /* Some padding */
+    border-radius: 50%; /* Rounded corners */
+    opacity: 0.5;
+}
+
+#myBtn:hover {
+    background-color: #ddd; /* Add a dark-grey background on hover */
+    opacity: 1;
+    z-index: 999;
+}
+</style>
+ 
+
+<script language='JavaScript' type='text/JavaScript'>
+
+
+function disp(dir){
+switch (dir) {
+case 'enter': playPause();
+								
+										break;
+case 'space': playPause();
+								
+										break;
+case 'down': voldn();
+								
+										break;
+case 'left': vid.currentTime = vid.currentTime - 5;
+     	
+						 				break;
+case 'right': vid.currentTime = vid.currentTime + 5;
+     	
+										break;
+case 'up': volup();
+								
+										break;
+
+}
+
+
+//////////////////////
+}
+// Checking which arrow key is pressed
+document.onkeydown = function() {
+    switch (window.event.keyCode) {
+        case 13:
+            disp('enter') //alert('enter key'); 
+        case 32:
+            disp('space') //alert('space key'); 
+            break;
+        case 37:
+            disp('left') //alert('left key'); 
+            break;
+        case 38:
+            disp('up')//alert('up key'); 
+            break;
+        case 39:
+            disp('right')//alert('right key'); 
+            break;
+        case 40:
+            disp('down')//alert('down key');    
+    
+            break;
+    } 
+};
+</script>
+</head>
+<body> 
+<div  id="wrap">
+<video id="myVideo" ondblclick="toggleFullScreen();" onclick="playPause()" width="100%" height="100%" controls>
+  <source src="Tutorial 01 Introduction Jekyll - Static Site Generator .mp4" type="video/mp4">
+  <source src="mov_bbb.ogg" type="video/ogg">
+  Your browser does not support HTML5 video.
+</video><br> 
+<p id="demo"></p>
+</div>
+
+<input id="file" type='file'onchange="readURL(this);" /> 
+<button id="myBtn" type="button" onclick="document.getElementById('file').click()">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="15px" height="13px" viewBox="0 0 536.461 536.46" style="enable-background:new 0 0 536.461 536.46;"
+	 xml:space="preserve">
+<g>
+	<g>
+		<path d="M144.752,263.52c19.603-9.038,38.354-13.559,56.243-13.559h237.548v-45.683c0-17.511-6.283-32.555-18.85-45.118
+			c-12.565-12.562-27.596-18.842-45.11-18.842H219.266v-9.136c0-17.511-6.28-32.548-18.842-45.107
+			c-12.563-12.562-27.6-18.846-45.111-18.846h-91.36c-17.511,0-32.548,6.283-45.111,18.846C6.279,98.635,0,113.672,0,131.183
+			v274.084c0,0.764,0.049,1.955,0.144,3.576c0.094,1.615,0.144,2.807,0.144,3.566l1.426-1.704L97.93,297.637
+			C109.54,283.931,125.148,272.556,144.752,263.52z"/>
+		<path d="M528.898,290.214c-5.041-2.478-10.797-3.72-17.272-3.72H200.995c-12.562,0-26.219,3.381-40.968,10.14
+			c-14.75,6.766-26.219,14.986-34.401,24.701l-95.93,113.059c-5.902,6.662-8.853,12.945-8.853,18.849
+			c0,5.708,2.523,9.802,7.566,12.272c5.043,2.478,10.8,3.716,17.273,3.716h310.64c12.56,0,26.21-3.381,40.963-10.136
+			c14.75-6.756,26.214-14.989,34.399-24.701l95.931-113.059c5.899-6.663,8.846-12.939,8.846-18.849
+			C536.465,296.779,533.946,292.689,528.898,290.214z"/>
+	</g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg></button>
+
+<script>
+
+</script>
+<script>
+    var video = document.getElementById("myVideo");
+
+    function readURL(input) {
+        //THE METHOD THAT SHOULD SET THE VIDEO SOURCE
+        if (input.files && input.files[0]) {
+            var file = input.files[0];
+            var url = URL.createObjectURL(file);
+            console.log(url);
+            var reader = new FileReader();
+            reader.onload = function() {
+                video.src = url;
+                video.play();
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+
+<script>
+var vid = document.getElementById("myVideo");
+
+function playPause() { 
+    if (vid.paused) 
+       vid.play(); 
+    else 
+        vid.pause(); 
+}
+
+
+
+function volup() { 
+    vid.volume = vid.volume + .1;
+} 
+
+function voldn() { 
+    vid.volume = vid.volume - .1;
+} 
+
+
+</script> 
+
+<script>
+function myFunction() {
+    document.getElementById("demo").innerHTML = "Hello World";
+}
+function playPause1() {
+    document.getElementById("demo").innerHTML = "Hi";
+}
+
+</script>
+<script>
+function toggleFullScreen(){
+	if(vid.requestFullScreen){
+		vid.requestFullScreen();
+	} else if(vid.webkitRequestFullScreen){
+		vid.webkitRequestFullScreen();
+	} else if(vid.mozRequestFullScreen){
+		vid.mozRequestFullScreen();
+	}
+	if(vid.exitFullScreen){
+		vid.exitFullScreen();
+	} else if(vid.webkitExitFullScreen){
+		vid.webkitExitFullScreen();
+	} else if(vid.mozExitFullScreen){
+		vid.mozExitFullScreen();
+	}
+	
+}
+
+function toggleFullscreenelement(elem) {
+  elem = elem || document.documentElement;
+  if (!document.fullscreenElement && !document.mozFullScreenElement &&
+    !document.webkitFullscreenElement && !document.msFullscreenElement) {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+  }
+}
+</script>
+
+
+</body> 
+</html>
